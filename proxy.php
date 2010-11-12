@@ -177,7 +177,7 @@ if ( !$url ) {
     curl_setopt( $ch, CURLOPT_COOKIE, $cookie );
   }
   
-  curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+  #curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
   curl_setopt( $ch, CURLOPT_HEADER, true );
   curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
   
