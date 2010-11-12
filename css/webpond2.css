@@ -1,0 +1,14 @@
+
+li.ui-li img {
+    float: left;
+    padding: 0.5em 15px 0px 0px;
+}
+
+li.ui-li p.username {
+   font-weight: normal;
+}
+
+li.ui-li p {
+    font-size: -2;
+     margin: 0.5em 0px 0px 63px;
+}

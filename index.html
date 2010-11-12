@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+   <title>Mobile Web Pond</title>
+
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+   <link rel="stylesheet" href="css/webpond2.css" />
+   <link rel="apple-touch-icon" href="img/tutsTouchIcon.png" />
+
+   <script src="http://code.jquery.com/jquery-1.4.3.js"></script>
+   <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+   <script src="js/webpond2.js"></script>
+</head>
+<body>
+ <div data-role="page">
+
+   <header data-role="header">
+     Pond Mobile Web
+   </header>
+
+   <div data-role="content" id="content">
+     <form>
+       <label for="username">User:</label>
+       <input type="text" id="username" />
+       <label for="password">Password:</label>
+       <input type="password" id="password" />
+       <input type="button" onclick="auth()" value="login" />
+     </form>
+   </div>
+
+   <footer data-role="footer">
+     Copyright 2010 - Intraneia<br />Pond service by Sapo
+   </footer>
+
+ </div>
+
+</body>
+</html>
