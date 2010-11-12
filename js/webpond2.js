@@ -43,12 +43,12 @@ function filter_out_proxy(json) {
 
 function preprocess(str) {
   res = str;
-  res = res.replace(/\&/g, "&amp;");
-  res = res.replace(/\</g, "&lt;");
-  res = res.replace(/\>/g, "&gt;");
-  res = res.replace(/\"/g, "&quot;");
-  res = res.replace(/(http:\/\/[a-zA-Z0-9\-_+?.\/#=,&\:]*)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
-  res = res.replace(/^(http:\/\/)([a-zA-Z0-9\-_+?,]+\.[a-zA-Z0-9\-_+?.\:]+\/[a-zA-Z0-9\-_+?./#=&]+)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
+  //res = res.replace(/\&/g, "&amp;");
+  //res = res.replace(/\</g, "&lt;");
+  //res = res.replace(/\>/g, "&gt;");
+  //res = res.replace(/\"/g, "&quot;");
+  //res = res.replace(/(http:\/\/[a-zA-Z0-9\-_+?.\/#=,&\:]*)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
+  //res = res.replace(/^(http:\/\/)([a-zA-Z0-9\-_+?,]+\.[a-zA-Z0-9\-_+?.\:]+\/[a-zA-Z0-9\-_+?./#=&]+)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
   res = res.replace(/(^|[^a-zA-Z])@([a-zA-Z_\-@,0-9.]+)/g, " <a href=\"https://twitter.com/$2\" target=\"_blank\">@$2</a>");
   res = res.replace(/(^|[^a-zA-Z])#([a-zA-Z_\-@,0-9]+)/g, " <a href=\"https://twitter.com/search?q=$2\" target=\"_blank\">#$2</a>");
   return res;
@@ -91,11 +91,36 @@ function call_pond(service, args, callback) {
   });
 }
 
-function update_timeline() {
+function call_pond_1_1(service, args, callback) {
+  pond_authcode = readCookie("pond_auth");
+  if (!pond_authcode || pond_authcode == "") {
+    window.location.href = "index.html";
+  }
+  url = 'https://services.sapo.pt/Pond/v1_1/' + service + "?AuthToken=" + pond_authcode;
+  if (args) {
+    for (i in args) {
+      url += "&" + i + "=" + args[i];
+    }
+  }
+  $.ajax({
+    url: 'proxy.php',
+    dataType: 'json',
+    data: { url: url },
+    success: callback
+  });
+}
+
+function update_timeline(status) {
+  arg = {OnlyUnRead: "true"};
+  if (status == "all") {
+    arg = {};
+  } else if (status == "starred") {
+    arg = {OnlyFavorites: "true"};
+  }
   if (!updating) {
     update_next = false;
     updating = true;
-    call_pond("ListEventsJSON",{OnlyUnRead: "true"}, write_timeline);
+    call_pond_1_1("ListEventsJSON", arg, write_timeline);
   } else {
     update_next = true;
   }

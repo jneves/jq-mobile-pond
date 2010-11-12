@@ -8,7 +8,7 @@
 
    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
    <link rel="stylesheet" href="css/webpond2.css" />
-   <link rel="apple-touch-icon" href="img/tutsTouchIcon.png" />
+   <link rel="apple-touch-icon" href="img/intraneia.png" />
 
    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
    <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
@@ -21,16 +21,26 @@
 
 </head>
 <body>
- <div data-role="page">
+ <div data-role="page" id="unread">
    <header data-role="header">
      <h1>Pond Mobile Web</h1>
    </header>
 
    <div data-role="content">
+<p>
+       <div data-role="navbar">
+		<ul>
+                        <li><a href="all.html" rel="external">All</a></li>
+                        <li><a href="unread.html" rel="external" class="ui-btn-active">Unread</a></li>
+			<li><a href="starred.html" rel="external">Starred</a></li>
+		</ul>
+	</div><!-- /navbar -->
+</p>
+<p>
      <ul id="timeline" data-role="listview" class="ui-listview" role="listbox">
        <li>Loading...</li>
      </ul>
-     <p>
+</p>     <p>
        <fieldset class="ui-grid-b">
          <div class="ui-block-a"><a href="#" onclick="update_timeline()" data-role="button">Refresh</a></div>
          <div class="ui-block-b"><a href="#" onclick="mark_all_read()" data-role="button">Mark read</a></div>
