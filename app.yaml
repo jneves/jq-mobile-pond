@@ -4,6 +4,10 @@ runtime: python
 api_version: 1
 
 handlers:
+- url: /cache.manifest
+  static_files: static/cache.manifest
+  upload: static/cache.manifest
+  mime_type: text/cache-manifest
 - url: /
   script: main.py
 - url: /
