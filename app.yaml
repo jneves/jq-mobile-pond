@@ -10,6 +10,8 @@ handlers:
   mime_type: text/cache-manifest
 - url: /
   script: main.py
+- url: /proxy.php
+  script: main.py
 - url: /
   static_dir: static/
   expiration: 1

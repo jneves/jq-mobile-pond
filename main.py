@@ -5,7 +5,14 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 
 from google.appengine.api import urlfetch
-
+import cgi
+import urllib
+ 
+class PondProxyController(webapp.RequestHandler):
+	def get(self):
+		result = urlfetch.fetch(url=self.request.GET.get('url'), method=urlfetch.GET)
+		self.response.headers["Content-Type"] = "application/json"
+		self.response.out.write(result.content)
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -14,7 +21,8 @@ class MainHandler(webapp.RequestHandler):
 
         
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],  
+    application = webapp.WSGIApplication([('/', MainHandler), 
+					  ('/proxy.php', PondProxyController)],  
                                          debug=True)
     util.run_wsgi_app(application)
 
