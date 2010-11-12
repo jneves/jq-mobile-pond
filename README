@@ -12,6 +12,7 @@ Author: João Miguel Neves <joao.neves@intraneia.com>
 = Installation =
 
 Copy the files to a directory on a PHP enabled server (needed for the JSON proxy) that also serves static content.
+Make sure the server is configured to server ".manifest" files with the content type "text/cache-manifest".
 
 = Privacy & Security for the users =
 
