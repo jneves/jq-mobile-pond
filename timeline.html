@@ -13,31 +13,15 @@
    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
    <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
    <script src="js/webpond2.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+       update_timeline();
+     });
+  </script>
+
 </head>
 <body>
  <div data-role="page">
-
-   <header data-role="header">
-     <h1>Pond Mobile Web</h1>
-   </header>
-
-   <div data-role="content">
-     <form>
-       <label for="username">User:</label>
-       <input type="text" id="username" />
-       <label for="password">Password:</label>
-       <input type="password" id="password" />
-       <input type="button" onclick="auth()" value="login" />
-     </form>
-   </div>
-
-   <footer data-role="footer">
-     <h4>Copyright 2010 - Intraneia<br />Pond service by Sapo</h4>
-   </footer>
-
- </div>
- <div data-role="page" id="timeline">
-
    <header data-role="header">
      <h1>Pond Mobile Web</h1>
    </header>
@@ -48,9 +32,9 @@
      </ul>
      <p>
        <fieldset class="ui-grid-b">
-         <div class="ui-block-a"><button id="update_timeline" data-theme="b" type="submit">Refresh</button></div>
-         <div class="ui-block-b"><button id="mark_all_read" data-theme="b" type="submit">Mark read</button></div>
-         <div class="ui-block-c"><button id="logout_pond" data-theme="b" type="submit">Logout</button></div>
+         <div class="ui-block-a"><a href="#" onclick="update_timeline()" data-role="button">Refresh</a></div>
+         <div class="ui-block-b"><a href="#" onclick="mark_all_read()" data-role="button">Mark read</a></div>
+         <div class="ui-block-c"><a href="#" onclick="logout_pond()" data-role="button">Logout</a></div>
        </fieldset>
      </p>
    </div>
