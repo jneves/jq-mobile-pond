@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="css/webpond2.css" />
    <link rel="apple-touch-icon" href="img/tutsTouchIcon.png" />
 
-   <script src="http://code.jquery.com/jquery-1.4.3.js"></script>
+   <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
    <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
    <script src="js/webpond2.js"></script>
 </head>
@@ -22,13 +22,21 @@
    </header>
 
    <div data-role="content" id="content">
-     <form>
-       <label for="username">User:</label>
-       <input type="text" id="username" />
-       <label for="password">Password:</label>
-       <input type="password" id="password" />
-       <input type="button" onclick="auth()" value="login" />
-     </form>
+     <div id="content1">
+       <form>
+         <label for="username">User:</label>
+         <input type="text" id="username" />
+         <label for="password">Password:</label>
+         <input type="password" id="password" />
+         <input type="button" onclick="auth()" value="login" />
+       </form>
+     </div>
+     <p id="wp2-content-buttons">
+       <fieldset class="ui-grid-a">
+         <div class="ui-block-a"><button type="submit" onclick="update_timeline()" data-theme="b">Refresh</button></div>
+         <div class="ui-block-b"><button data-theme="b" onclick="mark_all_read()" type="submit">Mark read</button></div>
+       </fieldset>
+     </p>
    </div>
 
    <footer data-role="footer">

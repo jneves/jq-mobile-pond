@@ -1,3 +1,6 @@
+var updating = false;
+var update_next = false;
+
 /* Helper functions */
 
 function alert_me(arg, text){
@@ -48,10 +51,15 @@ function preprocess(str) {
 
 function write_timeline(arg, text) {
   json = filter_out_proxy(arg);
-  $("div#content").html("<ul id=\"timeline\" data-role=\"listview\" class=\"ui-listview\" role=\"listbox\"><li>Loading...</li></ul>");
+  $("div#content1").html("<ul id=\"timeline\" data-role=\"listview\" class=\"ui-listview\" role=\"listbox\"><li>Loading...</li></ul>");
   $("ul#timeline").html("");
   for (ev in json.Response.Events) {
     $("ul#timeline").append("<li class=\"ui-li ui-li-static ui-btn-up-c\" id=\""+json.Response.Events[ev].Event.EventID+"\"role=\"option\"><img src=\""+json.Response.Events[ev].Event.AvatarURL+"\" /><p class=\"username\">"+json.Response.Events[ev].Event.Name+"</p><p class=\"content\">"+ preprocess(json.Response.Events[ev].Event.TruncatedData) +"</p></li>");
+  }
+  $("#wp2-content-buttons").show();
+  updating = false;
+  if (update_next) {
+    update_timeline();
   }
 }
 
@@ -78,7 +86,13 @@ function call_pond(service, args, callback){
 }
 
 function update_timeline() {
-  call_pond("ListEventsJSON",{OnlyUnRead: "true"}, write_timeline);
+  if (!updating) {
+    update_next = false;
+    updating = true;
+    call_pond("ListEventsJSON",{OnlyUnRead: "true"}, write_timeline);
+  } else {
+    update_next = true;
+  }
 }
 
 function mark_all_read() {
@@ -92,8 +106,8 @@ function mark_all_read() {
 function login_res(json, text){
   if (json.status.http_code == 200) {
     createCookie("pond_auth", json.contents.Response.AuthToken, 0.4);
-    update_timeline();
   }
+  window.location="";
 }
 
 function auth(){
@@ -111,6 +125,7 @@ function auth(){
 /* Initialization */
 
 $(document).ready(function() {
+  $("#wp2-content-buttons").hide();
   update_timeline();
 });
 
