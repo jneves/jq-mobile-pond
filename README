@@ -1,0 +1,20 @@
+= Pond Web Mobile =
+
+An alternative implementation to Pond's web mobile interface for cellphones and tablets. Uses jQuery Mobile.
+
+= License =
+
+This software is distributed under AGPLv3.
+
+Copyright 2010 - Intraneia <http://intraneia.com/>
+Author: João Miguel Neves <joao.neves@intraneia.com>
+
+= Installation =
+
+Copy the files to a directory on a PHP enabled server (needed for the JSON proxy) that also serves static content.
+
+= Privacy & Security for the users =
+
+All communication goes thru the proxy.php script. If you want to provide any security and privacy for your users, please use SSL for your users to use. The password will pass in plaintext on the network.
+
+The login process receives an authentication code that is valid for Pond access for 12 hours. That authentication code is saved in a browser cookie valid for 8 hours.
