@@ -6,35 +6,51 @@
 
    <title>Mobile Web Pond</title>
 
-   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
    <link rel="stylesheet" href="css/webpond2.css" />
    <link rel="apple-touch-icon" href="img/tutsTouchIcon.png" />
 
-   <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-   <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+   <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+   <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
    <script src="js/webpond2.js"></script>
 </head>
 <body>
- <div data-role="page">
+ <div data-role="page" id="login">
 
    <header data-role="header">
      Pond Mobile Web
    </header>
 
-   <div data-role="content" id="content">
-     <div id="content1">
-       <form>
-         <label for="username">User:</label>
-         <input type="text" id="username" />
-         <label for="password">Password:</label>
-         <input type="password" id="password" />
-         <input type="button" onclick="auth()" value="login" />
-       </form>
-     </div>
+   <div data-role="content">
+     <form>
+       <label for="username">User:</label>
+       <input type="text" id="username" />
+       <label for="password">Password:</label>
+       <input type="password" id="password" />
+       <input type="button" onclick="auth()" value="login" />
+     </form>
+   </div>
+
+   <footer data-role="footer">
+     Copyright 2010 - Intraneia<br />Pond service by Sapo
+   </footer>
+
+ </div>
+ <div data-role="page" id="timeline">
+
+   <header data-role="header">
+     Pond Mobile Web
+   </header>
+
+   <div data-role="content">
+     <ul id="timeline" data-role="listview" class="ui-listview" role="listbox">
+       <li>Loading...</li>
+     </ul>
      <p id="wp2-content-buttons">
-       <fieldset class="ui-grid-a">
+       <fieldset class="ui-grid-b">
          <div class="ui-block-a"><button type="submit" onclick="update_timeline()" data-theme="b">Refresh</button></div>
          <div class="ui-block-b"><button data-theme="b" onclick="mark_all_read()" type="submit">Mark read</button></div>
+         <div class="ui-block-b"><button data-theme="b" onclick="logout_pond()" type="submit">Logout</button></div>
        </fieldset>
      </p>
    </div>

@@ -51,7 +51,6 @@ function preprocess(str) {
 
 function write_timeline(arg, text) {
   json = filter_out_proxy(arg);
-  $("div#content1").html("<ul id=\"timeline\" data-role=\"listview\" class=\"ui-listview\" role=\"listbox\"><li>Loading...</li></ul>");
   $("ul#timeline").html("");
   for (ev in json.Response.Events) {
     $("ul#timeline").append("<li class=\"ui-li ui-li-static ui-btn-up-c\" id=\""+json.Response.Events[ev].Event.EventID+"\"role=\"option\"><img src=\""+json.Response.Events[ev].Event.AvatarURL+"\" /><p class=\"username\">"+json.Response.Events[ev].Event.Name+"</p><p class=\"content\">"+ preprocess(json.Response.Events[ev].Event.TruncatedData) +"</p></li>");
@@ -68,8 +67,8 @@ function write_timeline(arg, text) {
 
 function call_pond(service, args, callback){
   pond_authcode = readCookie("pond_auth");
-  if (!pond_authcode) {
-    return false;
+  if (!pond_authcode || pond_authcode == "") {
+    window.location="index.html";
   }
   url = 'https://services.sapo.pt/Pond/' + service + "?AuthToken=" + pond_authcode;
   if (args) {
@@ -103,11 +102,16 @@ function mark_all_read() {
   );
 }
 
+function logout_pond() {
+  eraseCookie("pond_auth");
+  window.location = "index.html#login";
+}
+
 function login_res(json, text){
   if (json.status.http_code == 200) {
     createCookie("pond_auth", json.contents.Response.AuthToken, 0.4);
   }
-  window.location="";
+  window.location="index.html#timeline";
 }
 
 function auth(){
