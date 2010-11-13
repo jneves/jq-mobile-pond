@@ -75,7 +75,7 @@ function write_timeline(arg, text) {
 function call_pond(service, args, callback) {
   pond_authcode = readCookie("pond_auth");
   if (!pond_authcode || pond_authcode == "") {
-    window.location.href = "index.html";
+    window.location.href = "/";
   }
   url = 'https://services.sapo.pt/Pond/' + service + "?AuthToken=" + pond_authcode;
   if (args) {
@@ -94,7 +94,7 @@ function call_pond(service, args, callback) {
 function call_pond_1_1(service, args, callback) {
   pond_authcode = readCookie("pond_auth");
   if (!pond_authcode || pond_authcode == "") {
-    window.location.href = "index.html";
+    window.location.href = "/";
   }
   url = 'https://services.sapo.pt/Pond/v1_1/' + service + "?AuthToken=" + pond_authcode;
   if (args) {
@@ -138,7 +138,7 @@ function mark_all_read() {
 function logout_pond() {
   alert("logout_pond()");
   eraseCookie("pond_auth");
-  window.location.href = "index.html";
+  window.location.href = "/";
   return false;
 }
 
@@ -147,7 +147,7 @@ function login_res(json, text){
     createCookie("pond_auth", json.contents.Response.AuthToken, 0.4);
     window.location.href = "timeline.html";
   } else {
-    window.location.href = "index.html";
+    window.location.href = "/";
   }
 }
 
