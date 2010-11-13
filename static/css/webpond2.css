@@ -4,7 +4,7 @@ li.ui-li img {
     margin: 0.5em 15px 0px 0px;
 }
 
-li.mine img {
+li.ui-li img.mine {
     float: right;
     margin: 0.5em 15px 0px 0px;
 }
@@ -16,4 +16,13 @@ li.ui-li p.username {
 li.ui-li p {
     font-size: -2;
      margin: 0.5em 0px 0px 63px;
+}
+
+li.mine p.username {
+   text-align: right;
+}
+
+li.mine p {
+    font-size: -2;
+     margin: 0.5em 63px 0px 0px;
 }

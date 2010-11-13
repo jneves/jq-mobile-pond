@@ -1,13 +1,13 @@
 CACHE MANIFEST
 
 # Pond Next Cache Manifest
-# version 1
+# version 2
 
 all.html
 starred.html
 timeline.html
 #favicon.ico
-js/webpond2.js
+#js/webpond2.js
 img/intraneia.png
 css/webpond2.css
 

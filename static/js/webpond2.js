@@ -62,7 +62,13 @@ function write_timeline(arg, text) {
   } else {
     $("ul#timeline").html("");
     for (ev in json.contents.Response.Events) {
-      $("ul#timeline").append("<li class=\"ui-li ui-li-static ui-btn-up-c mine\" id=\""+json.contents.Response.Events[ev].Event.EventID+"\"ole=\"option\"><img src=\""+json.contents.Response.Events[ev].Event.AvatarURL+"\" /><p class=\"username\">"+json.contents.Response.Events[ev].Event.Name+"</p><p class=\"content\">"+ preprocess(json.contents.Response.Events[ev].Event.TruncatedData) +"</p></li>");
+      img_class = "";
+      extra_class = "";
+      if (json.contents.Response.Events[ev].Event.Mine == "true") {
+        img_class = "class=\"mine\"";
+        extra_class = "mine";
+      }
+      $("ul#timeline").append("<li class=\"ui-li ui-li-static ui-btn-up-c "+extra_class+"\" id=\""+json.contents.Response.Events[ev].Event.EventID+"\"ole=\"option\"><img src=\""+json.contents.Response.Events[ev].Event.AvatarURL+"\" "+img_class+" /><p class=\"username\">"+json.contents.Response.Events[ev].Event.Name+"</p><p class=\"content\">"+ preprocess(json.contents.Response.Events[ev].Event.TruncatedData) +"</p></li>");
     }
   }
   updating = false;
