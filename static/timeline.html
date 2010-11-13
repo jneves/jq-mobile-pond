@@ -15,6 +15,8 @@
    <script src="js/webpond2.js"></script>
    <script type="text/javascript">
      $(document).ready(function() {
+       $("div").bind('swipeleft', function() { window.location.href="all.html"; });
+       $("div").bind('swiperight', function() { window.location.href="starred.html"; });
        update_timeline();
      });
   </script>
@@ -31,7 +33,7 @@
        <div data-role="navbar">
 		<ul>
                         <li><a href="all.html" rel="external">All</a></li>
-                        <li><a href="unread.html" rel="external" class="ui-btn-active">Unread</a></li>
+                        <li><a href="timeline.html" rel="external" class="ui-btn-active">Unread</a></li>
 			<li><a href="starred.html" rel="external">Starred</a></li>
 		</ul>
 	</div><!-- /navbar -->
@@ -41,16 +43,20 @@
        <li>Loading...</li>
      </ul>
 </p>     <p>
-       <fieldset class="ui-grid-b">
+       <div class="ui-grid-a">
          <div class="ui-block-a"><a href="#" onclick="update_timeline()" data-role="button">Refresh</a></div>
          <div class="ui-block-b"><a href="#" onclick="mark_all_read()" data-role="button">Mark read</a></div>
-         <div class="ui-block-c"><a href="#" onclick="logout_pond()" data-role="button">Logout</a></div>
-       </fieldset>
+       </div>
+       <div class="ui-grid-a">
+         <div class="ui-block-a"><a href="#" onclick="pond_post()" data-role="button">Post</a></div>
+         <div class="ui-block-b"><a href="#" onclick="logout_pond()" data-role="button">Logout</a></div>
+       </div>
      </p>
+<p>
    </div>
 
    <footer data-role="footer">
-     <h4>Copyright 2010 - Intraneia<br />Pond service by Sapo</h4>
+     <h3>Copyright 2010 - Intraneia<br />Pond service by Sapo</h3>
    </footer>
 
  </div>

@@ -1,15 +1,15 @@
 CACHE MANIFEST
 
 # Pond Next Cache Manifest
-# version 2
+# version 3
 
-all.html
-starred.html
-timeline.html
+#all.html
+#starred.html
+#timeline.html
 #favicon.ico
 #js/webpond2.js
 img/intraneia.png
-css/webpond2.css
+#css/webpond2.css
 
 http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css
 http://code.jquery.com/jquery-1.4.4.min.js

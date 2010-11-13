@@ -1,5 +1,5 @@
 
-li.ui-li img {
+li.ui-li img.avatar {
     float: left;
     margin: 0.5em 15px 0px 0px;
 }
@@ -11,6 +11,14 @@ li.ui-li img.mine {
 
 li.ui-li p.username {
    font-weight: normal;
+}
+
+li.ui-li p.thumbnail {
+    text-align: center;
+}
+
+li.ui-li p.details {
+    float: right;
 }
 
 li.ui-li p {
