@@ -62,7 +62,7 @@ function write_timeline(arg, text) {
   } else {
     $("ul#timeline").html("");
     for (ev in json.contents.Response.Events) {
-      $("ul#timeline").append("<li class=\"ui-li ui-li-static ui-btn-up-c\" id=\""+json.contents.Response.Events[ev].Event.EventID+"\"ole=\"option\"><img src=\""+json.contents.Response.Events[ev].Event.AvatarURL+"\" /><p class=\"username\">"+json.contents.Response.Events[ev].Event.Name+"</p><p class=\"content\">"+ preprocess(json.contents.Response.Events[ev].Event.TruncatedData) +"</p></li>");
+      $("ul#timeline").append("<li class=\"ui-li ui-li-static ui-btn-up-c mine\" id=\""+json.contents.Response.Events[ev].Event.EventID+"\"ole=\"option\"><img src=\""+json.contents.Response.Events[ev].Event.AvatarURL+"\" /><p class=\"username\">"+json.contents.Response.Events[ev].Event.Name+"</p><p class=\"content\">"+ preprocess(json.contents.Response.Events[ev].Event.TruncatedData) +"</p></li>");
     }
   }
   updating = false;

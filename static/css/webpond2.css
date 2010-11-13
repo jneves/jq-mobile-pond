@@ -4,6 +4,11 @@ li.ui-li img {
     margin: 0.5em 15px 0px 0px;
 }
 
+li.mine img {
+    float: right;
+    margin: 0.5em 15px 0px 0px;
+}
+
 li.ui-li p.username {
    font-weight: normal;
 }
