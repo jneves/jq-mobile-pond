@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+   <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+   <title>Pond Next</title>
+
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+   <link rel="stylesheet" href="css/webpond2.css" />
+   <link rel="apple-touch-icon" href="img/intraneia.png" />
+
+   <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+   <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+   <script src="js/webpond2.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+       call_pond("ListAccountsJSON",{}, function(json, text){
+         $("ul#accounts").html("");
+         if (json.status.http_code == 200) {
+           for (acc in json.contents.Response.Accounts) {
+             if (json.contents.Response.Accounts[acc].Account.CanPost == "true" && json.contents.Response.Accounts[acc].Account.CanShortText == "true") {
+               $("ul#accounts").append("<li><input type=\"checkbox\" name=\"json.contents.Response.Accounts[acc].Account.ID\" checked><label for=\"json.contents.Response.Accounts[acc].Account.ID\">"+json.contents.Response.Accounts[acc].Account.Description+"</label></li>");
+             }
+           }
+         } else {
+           $("ul#accounts").html("<li>Pond connection failed!</li>");
+         }
+       });
+     });
+  </script>
+
+</head>
+<body>
+ <div data-role="page" id="all">
+   <header data-role="header">
+     <h1>Pond Next</h1>
+   </header>
+
+   <div data-role="content">
+     <p>
+       <div data-role="navbar">
+		<ul>
+                        <li><a href="all.html" rel="external" class="ui-btn-active">All</a></li>
+                        <li><a href="timeline.html" rel="external">Unread</a></li>
+			<li><a href="starred.html" rel="external">Starred</a></li>
+		</ul>
+	</div><!-- /navbar -->
+</p>
+<form action="#">
+<p>
+<textarea name="text"></textarea>
+</p>
+<p>
+<ul id="accounts">
+<li>Loading accounts...</li>
+</ul>
+</p>
+<p>
+<input type="submit" data-role="button" value="Send" />
+</p>
+</form>
+   </div>
+
+   <footer data-role="footer">
+     <h4>Copyright 2010 - Intraneia<br />Pond service by Sapo</h4>
+   </footer>
+
+ </div>
+
+</body>
+</html>
