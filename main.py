@@ -12,7 +12,7 @@ class PondProxyController(webapp.RequestHandler):
 	def get(self):
 		result = urlfetch.fetch(url=self.request.GET.get('url'), method=urlfetch.GET)
 		self.response.headers["Content-Type"] = "application/json"
-		self.response.out.write(result.content)
+		self.response.out.write('{"status": { "http_code":' + str(result.status_code) + ' }, "contents": ' + result.content + '}')
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
